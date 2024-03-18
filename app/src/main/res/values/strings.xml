@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lista-szczegoly</string>
+    <string name="detail_button">Giewont z Zakopanego przez Przełęcz w Grzybowcu</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment\n</string>
+    <string name="path_detail">Szczegóły dotyczące szlaku\n</string>
+    <string name="detail_button2">Giewont przez Dolinę Małej Łąki</string>
+    <string name="back_arrow">back Arrow</string>
+</resources>
