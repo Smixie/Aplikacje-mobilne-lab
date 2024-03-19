@@ -1,6 +1,7 @@
 package com.example.lista_szczegoly
 
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,10 +28,11 @@ class TrailsListDetailFragment : Fragment() {
 
         if (view != null) {
             val title = view.findViewById<TextView>(R.id.textTitle)
-            val trails = HikingTrails.trails[id]
+            val trails = HikingTrails.trails[trailId]
             title.text = trails.getName()
             val description = view.findViewById<TextView>(R.id.list_details)
             description.text = trails.getDescription()
+            description.movementMethod = LinkMovementMethod.getInstance()
         }
     }
 }
