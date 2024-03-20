@@ -13,7 +13,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         val frag = supportFragmentManager.findFragmentById(R.id.detail_flag) as? TrailsListDetailFragment
-        val trailsId = intent.extras?.getInt(EXTRA_TRAILS_ID) ?: 0
+        val trailsId = intent?.extras?.getInt(EXTRA_TRAILS_ID, 0) ?: 0
         frag?.setTrailsId(trailsId)
     }
 }
