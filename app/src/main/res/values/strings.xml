@@ -6,4 +6,7 @@
     <string name="path_detail">Szczegóły dotyczące szlaku\n</string>
     <string name="detail_button2">Giewont przez Dolinę Małej Łąki</string>
     <string name="back_arrow">back Arrow</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="reset">Reset</string>
 </resources>

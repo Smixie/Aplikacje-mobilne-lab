@@ -7,13 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentTransaction
 
 class TrailsListDetailFragment : Fragment() {
-    private var trailId : Int = 0
+    private var trailId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState != null) {
+        if (savedInstanceState == null) {
+            val stoper = StoperFragment()
+            val ft = childFragmentManager.beginTransaction()
+            ft.add(R.id.stoper_container, stoper)
+            ft.addToBackStack(null)
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            ft.commit()
+        } else {
             trailId = savedInstanceState.getInt("trailId")
         }
     }
@@ -25,7 +33,7 @@ class TrailsListDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_list_detail, container, false)
     }
 
-    fun setTrailsId(id: Int){
+    fun setTrailsId(id: Int) {
         this.trailId = id
     }
 
