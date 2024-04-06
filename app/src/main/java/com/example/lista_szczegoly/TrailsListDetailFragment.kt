@@ -11,6 +11,13 @@ import android.widget.TextView
 class TrailsListDetailFragment : Fragment() {
     private var trailId : Int = 0
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState != null) {
+            trailId = savedInstanceState.getInt("trailId")
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,5 +41,10 @@ class TrailsListDetailFragment : Fragment() {
             description.text = trails.getDescription()
             description.movementMethod = LinkMovementMethod.getInstance()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("trailId", trailId)
+        super.onSaveInstanceState(outState)
     }
 }
