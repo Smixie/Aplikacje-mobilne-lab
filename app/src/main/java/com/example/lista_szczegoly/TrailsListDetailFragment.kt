@@ -2,6 +2,7 @@ package com.example.lista_szczegoly
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ class TrailsListDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
+            Log.i("obrot","obrot")
             val stoper = StoperFragment()
             val ft = childFragmentManager.beginTransaction()
             ft.add(R.id.stoper_container, stoper)
