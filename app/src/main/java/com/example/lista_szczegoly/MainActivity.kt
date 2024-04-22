@@ -22,8 +22,9 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val fragmentManager = supportFragmentManager
         val fragmentContainer = findViewById<View>(R.id.fragment_container)
-        if (fragmentContainer != null && HikingTrails.trails.isNotEmpty()) {
+        if (fragmentContainer != null && HikingTrails.trails.isNotEmpty() && fragmentManager.backStackEntryCount == 0) {
             tabletView(0)
         }
     }
