@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
@@ -21,6 +22,9 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val fragmentManager = supportFragmentManager
         val fragmentContainer = findViewById<View>(R.id.fragment_container)

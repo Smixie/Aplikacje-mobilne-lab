@@ -4,6 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/toolbar" />
+
     <fragment
         android:name="com.example.lista_szczegoly.ListDetailsListFragment"
         android:id="@+id/list_frag"
