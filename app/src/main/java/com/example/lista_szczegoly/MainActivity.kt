@@ -3,13 +3,18 @@ package com.example.lista_szczegoly
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ShareActionProvider
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
 
+    private var shareActionProvider: ShareActionProvider? = null
     private fun tabletView(id: Int) {
         val details = TrailsListDetailFragment()
         val ft = supportFragmentManager.beginTransaction()
@@ -32,6 +37,35 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
             tabletView(0)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        val menuItem = menu.findItem(R.id.action_share)
+        shareActionProvider = MenuItemCompat.getActionProvider(menuItem) as ShareActionProvider
+        setShareActionIntent("Blablablablablla")
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun setShareActionIntent(text: String) {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, text)
+        shareActionProvider?.setShareIntent(intent)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.list_details -> {
+                val intent = Intent(this, DetailActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
 
     override fun itemClicked(id: Int) {
         val fragmentContainer = findViewById<View>(R.id.fragment_container)

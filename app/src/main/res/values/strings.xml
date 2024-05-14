@@ -3,6 +3,8 @@
     <string name="detail_button">Giewont z Zakopanego przez Przełęcz w Grzybowcu</string>
     <string name="detail_activity_title">Detail Activity</string>
     <string name="detail_title">Detail_Activity</string>
+    <string name="detail_share">Share</string>
+    <string name="title_top">Fragment główny</string>
     <string name="hello_blank_fragment">Hello blank fragment\n</string>
     <string name="path_detail">Szczegóły dotyczące szlaku\n</string>
     <string name="detail_button2">Giewont przez Dolinę Małej Łąki</string>
@@ -10,4 +12,17 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Reset</string>
+
+
+    <string-array name="kategoria1">
+        <item>Pozycja 1 Kat. 1</item>
+        <item>Pozycja 2 Kat. 1 </item>
+        <item>Pozycja 3 Kat. 1 </item>
+    </string-array>
+    2
+    <string-array name="kategoria2">
+        <item>Kat. 2 Pozycja 1</item>
+        <item>Kat. 2 Pozycja 2</item>
+        <item>Kat. 2 Pozycja 3 </item>
+    </string-array>
 </resources>

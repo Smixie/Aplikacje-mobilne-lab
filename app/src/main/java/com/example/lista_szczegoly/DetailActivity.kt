@@ -10,14 +10,18 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_TRAILS_ID = "id"
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        val frag = supportFragmentManager.findFragmentById(R.id.detail_flag) as? TrailsListDetailFragment
-        val trailsId = intent?.extras?.getInt(EXTRA_TRAILS_ID, 0) ?: 0
-        frag?.setTrailsId(trailsId)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val frag = supportFragmentManager.findFragmentById(R.id.detail_flag) as? TrailsListDetailFragment
+        val trailsId = intent?.extras?.getInt(EXTRA_TRAILS_ID, 0) ?: 0
+        frag?.setTrailsId(trailsId)
     }
 }
