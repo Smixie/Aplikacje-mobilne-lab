@@ -11,6 +11,8 @@ import androidx.appcompat.widget.ShareActionProvider
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.FragmentTransaction
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
 
@@ -24,9 +26,17 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
         ft.addToBackStack(null)
         ft.commit()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val pagerAdapter = SectionsPagerAdapter(supportFragmentManager, this)
+        val pager: ViewPager = findViewById(R.id.pager)
+        pager.adapter = pagerAdapter
+
+        val tableLayout: TabLayout = findViewById(R.id.tabs)
+        tableLayout.setupWithViewPager(pager)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -62,6 +72,7 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
                 startActivity(intent)
                 return true
             }
+
             else -> return super.onOptionsItemSelected(item)
         }
     }
