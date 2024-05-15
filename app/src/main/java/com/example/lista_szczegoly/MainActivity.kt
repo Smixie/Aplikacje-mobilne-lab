@@ -6,12 +6,14 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
@@ -87,5 +89,16 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
             intent.putExtra(DetailActivity.EXTRA_TRAILS_ID, id)
             startActivity(intent)
         }
+    }
+
+    fun onClickDone(view: View) {
+        val text = "To jest prosty pasek snackbar."
+        val duration = Snackbar.LENGTH_SHORT
+        val snackbar = Snackbar.make(findViewById(R.id.coordinator), text, duration)
+        snackbar.setAction("Cofnij") {
+            val toast = Toast.makeText(this@MainActivity, "Cofnięto!", Toast.LENGTH_SHORT)
+            toast.show()
+        }
+        snackbar.show()
     }
 }
