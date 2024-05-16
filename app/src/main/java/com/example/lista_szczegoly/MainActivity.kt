@@ -2,7 +2,6 @@ package com.example.lista_szczegoly
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -11,10 +10,15 @@ import androidx.appcompat.widget.ShareActionProvider
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.FragmentTransaction
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
+
+
 
 class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
 
     private var shareActionProvider: ShareActionProvider? = null
+
     private fun tabletView(id: Int) {
         val details = TrailsListDetailFragment()
         val ft = supportFragmentManager.beginTransaction()
@@ -28,8 +32,15 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val pagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        val pager: ViewPager = findViewById(R.id.pager)
+        pager.adapter = pagerAdapter
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        val tabLayout: TabLayout = findViewById(R.id.tabs)
+        tabLayout.setupWithViewPager(pager)
 
         val fragmentManager = supportFragmentManager
         val fragmentContainer = findViewById<View>(R.id.fragment_container)
