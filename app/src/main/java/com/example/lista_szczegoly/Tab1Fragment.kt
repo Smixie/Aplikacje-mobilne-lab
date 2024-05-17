@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.ListFragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class Tab1Fragment : Fragment() {
@@ -15,9 +16,8 @@ class Tab1Fragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): RecyclerView {
-        val rootView = inflater.inflate(R.layout.fragment_tab1, container, false)
-        val trailsRecycler: RecyclerView = rootView.findViewById(R.id.tab1_recycler)
+    ): View {
+        val trailsRecycler: RecyclerView = inflater.inflate(R.layout.fragment_tab1, container, false) as RecyclerView
 
         val captions = Array(HikingTrails.trails.size) { i -> HikingTrails.trails[i].getName() }
         val trailsImagesId =
@@ -26,14 +26,9 @@ class Tab1Fragment : Fragment() {
         val adapter = CaptionedImagesAdapter(captions, trailsImagesId)
         trailsRecycler.adapter = adapter
 
-        return trailsRecycler
+        val layoutManager = GridLayoutManager(activity, 2)
+        trailsRecycler.layoutManager = layoutManager
 
-//        val adapter = ArrayAdapter(
-//            inflater.context,
-//            android.R.layout.simple_list_item_1,
-//            resources.getStringArray(R.array.kategoria1)
-//        )
-//        listAdapter = adapter
- //       return super.onCreateView(inflater, container, savedInstanceState)
+        return trailsRecycler
     }
 }
