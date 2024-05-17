@@ -1,5 +1,6 @@
 package com.example.lista_szczegoly
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,6 +29,12 @@ class Tab1Fragment : Fragment() {
 
         val layoutManager = GridLayoutManager(activity, 2)
         trailsRecycler.layoutManager = layoutManager
+
+        adapter.setListener(CaptionedImagesAdapter.Listener() { position ->
+            val intent = Intent(activity, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_TRAILS_ID, position)
+            activity?.startActivity(intent)
+        })
 
         return trailsRecycler
     }
