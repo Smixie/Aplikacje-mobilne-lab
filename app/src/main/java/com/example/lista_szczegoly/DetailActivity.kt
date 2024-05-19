@@ -28,8 +28,8 @@ class DetailActivity : AppCompatActivity() {
         frag?.setTrailsId(trailsId)
 
         val trailsName = HikingTrails.trails[trailsId].getName()
-        val textView = findViewById<TextView>(R.id.trails_text)
-        textView.text = trailsName
+//        val textView = findViewById<TextView>(R.id.trails_text)
+//        textView.text = trailsName
         val trailsImage = HikingTrails.trails[trailsId].getImage()
         val imageView = findViewById<ImageView>(R.id.trails_image)
         imageView.setImageDrawable(ContextCompat.getDrawable(this, trailsImage))
