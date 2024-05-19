@@ -2,7 +2,6 @@ package com.example.lista_szczegoly
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -21,9 +20,11 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
+
 class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener, NavigationView.OnNavigationItemSelectedListener {
 
     private var shareActionProvider: ShareActionProvider? = null
+
     private fun tabletView(id: Int) {
         val details = TrailsListDetailFragment()
         val ft = supportFragmentManager.beginTransaction()
