@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener, Navi
         when (id) {
             R.id.drawer_list -> fragment = ListDetailsListFragment()
             R.id.drawer_gallery -> fragment = Tab1Fragment()
+            R.id.drawer_sun-> fragment = SunsetFragment()
             // Add other cases as needed
             else -> fragment = ListDetailsListFragment()
         }

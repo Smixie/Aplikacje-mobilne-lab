@@ -9,4 +9,8 @@
         android:id="@+id/drawer_gallery"
         android:icon="@drawable/gallery"
         android:title="@string/drawer_gallery" />
+    <item
+        android:id="@+id/drawer_sun"
+        android:icon="@drawable/sun"
+        android:title="@string/drawer_sun" />
 </menu>

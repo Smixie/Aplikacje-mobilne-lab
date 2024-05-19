@@ -22,6 +22,7 @@
     <string name="close_drawer">Zamknij szufladę nawigacyjną</string>
     <string name="drawer_list"> Lista </string>
     <string name="drawer_gallery"> Galeria </string>
+    <string name="drawer_sun"> Słońce </string>
 
 
     <string-array name="kategoria1">
