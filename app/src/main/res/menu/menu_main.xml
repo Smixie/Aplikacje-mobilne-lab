@@ -6,9 +6,4 @@
         android:orderInCategory="1"
         app:showAsAction="ifRoom"
         app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider" />
-    <item android:id="@+id/detail_action"
-        android:title="@string/detail_title"
-        android:icon="@drawable/menu"
-        android:orderInCategory="2"
-        app:showAsAction="ifRoom" />
 </menu>

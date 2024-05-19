@@ -14,6 +14,16 @@
     <string name="reset">Reset</string>
 
 
+    <string name="user_authors"> Autorzy: </string>
+    <string name="user_name1"> Sebastian Jałoszyński </string>
+    <string name="user_name2"> Kacper Magnuszewski </string>
+
+    <string name="open_drawer">Otwórz szufladę nawigacyjną</string>
+    <string name="close_drawer">Zamknij szufladę nawigacyjną</string>
+    <string name="drawer_list"> Lista </string>
+    <string name="drawer_gallery"> Galeria </string>
+
+
     <string-array name="kategoria1">
         <item>Pozycja 1 Kat. 1</item>
         <item>Pozycja 2 Kat. 1 </item>
