@@ -20,7 +20,8 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
 
-class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener, NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener,
+    NavigationView.OnNavigationItemSelectedListener {
 
     private var shareActionProvider: ShareActionProvider? = null
 
@@ -38,36 +39,38 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener, Navi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener(this)
+
         val fragmentManager = supportFragmentManager
         val fragmentContainer = findViewById<View>(R.id.fragment_container)
         if (fragmentContainer != null && HikingTrails.trails.isNotEmpty() && fragmentManager.backStackEntryCount == 0) {
             tabletView(0)
-        }
-        else {
-
-            val toolbar: Toolbar = findViewById(R.id.toolbar)
-            setSupportActionBar(toolbar)
-
-            val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
-            val toggle = ActionBarDrawerToggle(
-                this,
-                drawer,
-                toolbar,
-                R.string.open_drawer,
-                R.string.close_drawer
-            )
-            drawer.addDrawerListener(toggle)
-            toggle.syncState()
-
-            val navigationView: NavigationView = findViewById(R.id.nav_view)
-            navigationView.setNavigationItemSelectedListener(this)
-
-            val fragment = ListDetailsListFragment()
-            supportFragmentManager.beginTransaction().apply {
-                add(R.id.content_frame, fragment)
-                commit()
+        } else {
+            if (savedInstanceState == null) {
+                val fragment = ListDetailsListFragment()
+                supportFragmentManager.beginTransaction().apply {
+                    add(R.id.content_frame, fragment)
+                    commit()
+                }
             }
         }
+
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -78,7 +81,7 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener, Navi
         when (id) {
             R.id.drawer_list -> fragment = ListDetailsListFragment()
             R.id.drawer_gallery -> fragment = Tab1Fragment()
-            R.id.drawer_sun-> fragment = SunsetFragment()
+            R.id.drawer_sun -> fragment = SunsetFragment()
             else -> fragment = ListDetailsListFragment()
         }
 
