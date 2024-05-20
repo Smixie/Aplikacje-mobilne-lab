@@ -16,8 +16,10 @@ import androidx.core.view.MenuItemCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 
 
 class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener,
@@ -69,8 +71,6 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener,
                 }
             }
         }
-
-
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -78,26 +78,22 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener,
         var fragment: Fragment? = null
         val intent: Intent? = null
 
-        when (id) {
-            R.id.drawer_list -> fragment = ListDetailsListFragment()
-            R.id.drawer_gallery -> fragment = Tab1Fragment()
-            R.id.drawer_sun -> fragment = SunsetFragment()
-            else -> fragment = ListDetailsListFragment()
+        fragment = when (id) {
+            R.id.drawer_list -> ListDetailsListFragment()
+            R.id.drawer_gallery -> Tab1Fragment()
+            R.id.drawer_sun -> SunsetFragment()
+            else -> ListDetailsListFragment()
         }
 
-        if (fragment != null) {
-            val ft = supportFragmentManager.beginTransaction()
-            val fragmentContainer = findViewById<View>(R.id.fragment_container)
-            if (fragmentContainer != null) {
-                ft.replace(R.id.fragment_container, fragment)
-            } else {
-                ft.replace(R.id.content_frame, fragment)
-            }
-            ft.addToBackStack(null)
-            ft.commit()
+        val ft = supportFragmentManager.beginTransaction()
+        val fragmentContainer = findViewById<View>(R.id.fragment_container)
+        if (fragmentContainer != null) {
+            ft.replace(R.id.fragment_container, fragment)
         } else {
-            startActivity(intent)
+            ft.replace(R.id.content_frame, fragment)
         }
+        ft.addToBackStack(null)
+        ft.commit()
 
         val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
         drawer.closeDrawer(GravityCompat.START)
@@ -155,14 +151,14 @@ class MainActivity : AppCompatActivity(), ListDetailsListFragment.Listener,
         }
     }
 
-//    fun onClickDone(view: View) {
-//        val text = "To jest prosty pasek snackbar."
-//        val duration = Snackbar.LENGTH_SHORT
-//        val snackbar = Snackbar.make(findViewById(R.id.coordinator), text, duration)
-//        snackbar.setAction("Cofnij") {
-//            val toast = Toast.makeText(this@MainActivity, "Cofnięto!", Toast.LENGTH_SHORT)
-//            toast.show()
-//        }
-//        snackbar.show()
-//    }
+    fun onClickDone(view: View) {
+        val text = "To jest prosty pasek snackbar."
+        val duration = Snackbar.LENGTH_SHORT
+        val snackbar = Snackbar.make(findViewById(R.id.coordinator), text, duration)
+        snackbar.setAction("Cofnij") {
+            val toast = Toast.makeText(this@MainActivity, "Cofnięto!", Toast.LENGTH_SHORT)
+            toast.show()
+        }
+        snackbar.show()
+    }
 }
